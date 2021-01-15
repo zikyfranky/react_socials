@@ -1,15 +1,36 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Login from "../components/Login/Login";
-import Register from "../components/Register/Register";
+import Login from "../components/Auth/Login";
+import Register from "../components/Auth/Register";
+import firebase from "firebase/app";
 
 const Auth = props => {
 
-    const login = ()=>{
-        
+    const login = (e)=>{
+        e.preventDefault();
+        firebase.app().auth().signInWithEmailAndPassword("email@email.com", "password")
+        .then((user) => {
+            console.log(user)
+        })
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode, errorMessage)
+            // ..
+        });
     }
-    const register = ()=>{
-
+    const register = (e)=>{
+        e.preventDefault();
+        firebase.app().auth().createUserWithEmailAndPassword("email@email.com", "password")
+        .then((user) => {
+            console.log(user)
+        })
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode, errorMessage)
+            // ..
+        });
     }
 
     return (

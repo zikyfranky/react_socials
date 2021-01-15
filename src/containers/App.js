@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
-import Auth from "./Auth"
+import Auth from "./Auth";
 
 class App extends Component {
   
-  render(){
-
+  render(){    
     return(
       <Switch>
         <Route path="/" exact />
